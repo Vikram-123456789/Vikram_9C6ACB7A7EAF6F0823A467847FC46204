@@ -1,45 +1,21 @@
- 
+# Python program to check if year is a leap year or not
 
-class Player(object):
-    def __init__(self, name, age, skills, style=None):
-        self.name = name
-        self.age = age
-        self.skills = skills
-        self.style = style
+year = 2000
 
-    def get_player(self):
-        print(self.name,self.age,self.skills,self.style)
+# To get year (integer input) from the user
+# year = int(input("Enter a year: "))
 
+# divided by 100 means century year (ending with 00)
+# century year divided by 400 is leap year
+if (year % 400 == 0) and (year % 100 == 0):
+    print("{0} is a leap year".format(year))
 
-class Team(object):
-    def __init__(self, name):
-        self.name = name
-        self._players = []
+# not divided by 100 means not a century year
+# year divided by 4 is a leap year
+elif (year % 4 ==0) and (year % 100 != 0):
+    print("{0} is a leap year".format(year))
 
-    def add_player(self, obj):
-        if isinstance(obj, Player):
-            self._players.append(obj)
-        else:
-            print("Please provide player object")
-
-    def get_players(self):
-        for player in self._players:
-            player.get_player()
-
-
-if __name__ == "__main__":
-
-    p1 = Player("Mahendra", 46, "Wicket Kipper", "Right-Hand Batsman")
-    p2 = Player("Sachin", 35, "Batsman", "Right-Hand Batsman")
-    p3 = Player("Saurabh", 44, "Batsman", "Left-Hand Batsman")
-    p4 = Player("Zahir", 38, "Bauwller", "Medium Pace Bauwller")
-    p5 = Player("Yuvraj", 43, "All rounder")
-
-    t = Team("India")
-    t.add_player(p1)
-    t.add_player(p2)
-    t.add_player(p3)
-    t.add_player(p4)
-    t.add_player(p5)
-
-    t.get_players()
+# if not divided by both 400 (century year) and 4 (not century year)
+# year is not leap year
+else:
+    print("{0} is not a leap year".format(year))
